@@ -8,7 +8,7 @@ body:
   attributes:
     label: Operating System
     description: What operating system are you using?
-    placeholder: Example: macOS Big Sur
+    placeholder: "Example: macOS Big Sur"
     value: operating system
   validations:
     required: true
@@ -28,7 +28,7 @@ body:
     description: The Code of Conduct helps create a safe space for everyone. We require
       that everyone agrees to it.
     options:
-      - label: I agree to follow this project's [Code of Conduct](link/to/coc)
+      - label: "I agree to follow this project's [Code of Conduct](link/to/coc)"
         required: true
 - type: markdown
   attributes:
