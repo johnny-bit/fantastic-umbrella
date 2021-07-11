@@ -1,5 +1,5 @@
 name: 🐞 Bug Report
-about: Open a new bug/issue report
+description: Open a new bug/issue report
 title: "[BUG] <Enter bug title here>"
 body:
 - type: markdown
