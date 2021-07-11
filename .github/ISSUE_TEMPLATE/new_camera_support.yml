@@ -1,0 +1,33 @@
+name: 📷 New camera or RAW file support
+description: Request for a new camera or RAW file type to be supported
+title: "<Enter your camera name here>"
+labels: [scope: camera support]
+assignees: johnny-bit
+body:
+- type: checkboxes
+  attributes:
+    label: Samples uploaded to raw.pixls.us
+    description: |
+      Before filing any support requests, please do make sure that you have already contributed the whole raw sample set for your camera under CC0 license to https://raw.pixls.us/
+      Important note: to make sure that darktable can keep on supporting the raw file format for your camera, *please* read [this post](https://discuss.pixls.us/t/raw-samples-wanted/5420?u=lebedevri) on how/what raw samples you can contribute to ensure that we have the *full* raw sample set for your camera under CC0 license!
+    options:
+    - label: I have contributed full set of samples to raw.pixls.us under CC0 licence
+      required: true
+    - label: I have read "RAW Samples wanted" post on discuss.pixls.us
+      required: true
+    - label: I have searched both closed and open issues for my camera and found none
+      required: true
+- type: input
+  attributes:
+    label: Camera name
+    description: "Enter full camera make and model (same as in title)"
+    placeholder: "Example: `Canon EOS R3 Mark II` or `Nikon Z 9_2`"
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Additional remarks
+    description: |
+      Enter any remarks here or leave empty
+  validations:
+    required: false
