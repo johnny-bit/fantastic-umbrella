@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contact
+    url: https://www.darktable.org/contact/
+    about: "Discuss the problem on darktable's forums or IRC before creating new issue"
+  - name: Documentation requests/issues
+    url: https://github.com/darktable-org/dtdocs/issues
+    about: "If you'd like to help us improve docs head here"
+  - name: Website requests/issues
+    url: https://github.com/darktable-org/dtorg/issues
+    about: "If you'd like to help us improve our darktable.org head here"
