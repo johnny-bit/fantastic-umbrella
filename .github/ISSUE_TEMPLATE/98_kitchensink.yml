@@ -1,0 +1,83 @@
+name: 🎛 Kitchensink
+description: Kitchensink of github forms
+title: "[kitchensink] <title>"
+labels: [good first issue]
+body:
+#basic stuff
+- type: textarea
+  attributes:
+    label: Operating System
+    description: What operating system are you using?
+    placeholder: Example: macOS Big Sur
+    value: operating system
+  validations:
+    required: true
+- type: dropdown
+  attributes:
+    label: Version
+    description: What version of our software are you running?
+    multiple: false
+    options:
+      - label: 1.0.2 (Default)
+      - label: 1.0.3 (Edge)
+  validations:
+    required: true
+- type: checkboxes
+  attributes:
+    label: Code of Conduct
+    description: The Code of Conduct helps create a safe space for everyone. We require
+      that everyone agrees to it.
+    options:
+      - label: I agree to follow this project's [Code of Conduct](link/to/coc)
+        required: true
+- type: markdown
+  attributes:
+    value: "Thanks for completing our form!"
+# per item samples
+- type: markdown
+  value: "## Thank you for contributing to our project!"
+- type: markdown
+  attributes:
+    value: |
+      Thanks for taking the time to fill out this bug report.
+- type: textarea
+  id: repro
+  attributes:
+    label: Reproduction steps
+    description: "How do you trigger this bug? Please walk us through it step by step."
+    value: |
+      1.
+      2.
+      3.
+      ...
+    render: bash
+  validations:
+    required: true
+- type: input
+  id: prevalence
+  attributes:
+    label: Bug prevalence
+    description: "How often do you or others encounter this bug?"
+    placeholder: "Example: Whenever I visit the user account page (1-2 times a week)"
+  validations:
+    required: true
+- type: dropdown
+  id: download
+  attributes:
+    label: How did you download the software?
+    options:
+      - Homebrew
+      - MacPorts
+      - apt-get
+      - Built from source
+  validations:
+    required: true
+- type: checkboxes
+  id: operating-systems
+  attributes:
+    label: Which operating systems have you used?
+    description: You may select more than one.
+    options:
+      - label: macOS
+      - label: Windows
+      - label: Linux
