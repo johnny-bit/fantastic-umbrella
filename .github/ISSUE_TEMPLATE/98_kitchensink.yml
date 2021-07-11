@@ -35,7 +35,8 @@ body:
     value: "Thanks for completing our form!"
 # per item samples
 - type: markdown
-  value: "## Thank you for contributing to our project!"
+  atturbites:
+    value: "## Thank you for contributing to our project!"
 - type: markdown
   attributes:
     value: |
