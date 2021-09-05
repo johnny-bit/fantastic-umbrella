@@ -41,10 +41,11 @@ jobs:
             echo "no new commits since last run"
             echo "::set-output name=log::"
           else
-            #echo -n "::set-output name=log::" > ../log1
             git log --reverse --first-parent --pretty=format:"%h: %s (%aN)" `cat ../recent_commit`..`cat ../current_commit` >> ../log
-            #echo "::set-output name=log::$(git log --reverse --first-parent --pretty=format:"%h: %s (%aN)" `cat ../recent_commit`..`cat ../current_commit`)"
+            echo "current log:"
             cat ../log
+            echo "";
+            echo "setting output...
             output="$(cat ../log)"
             output="${output//$'\n'/\\n}"
             output="${output// / }"
