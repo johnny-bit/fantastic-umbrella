@@ -28,21 +28,20 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: recent_commit
-          path: git_stats
       - name: Check for empty artifact
         if: ${{ failure() }}
         run: |
           cd src;
-          git log --format="%H" -n 1 --skip 10 > ../git_stats/recent_commit
+          git log --format="%H" -n 1 --skip 10 > ../recent_commit
       - name: git log
         id: log
         run: |
           cd src;
-          git log --format="%H" -n 1 > ../git_stats/current_commit
+          git log --format="%H" -n 1 > ../current_commit
           if cmp -s ../git_stats/recent_commit ../git_stats/current_commit; then
             echo "no new commits since last run";
           else
-            git log --first-parent --pretty=format:"%h: %s (%aN)" `cat ../git_stats/recent_commit`..`cat ../git_stats/current_commit`
+            git log --first-parent --pretty=format:"%h: %s (%aN)" `cat ../recent_commit`..`cat ../current_commit`
           fi;
       - name: IRC notification
         uses: Gottox/irc-message-action@v2
