@@ -41,10 +41,11 @@ jobs:
             echo "no new commits since last run"
             echo "::set-output name=log::"
           else
+            echo "$(git log --first-parent --pretty=format:"%h: %s (%aN)" `cat ../current_commit`..`cat ../recent_commit`)"
             echo "::set-output name=log::$(git log --first-parent --pretty=format:"%h: %s (%aN)" `cat ../current_commit`..`cat ../recent_commit`)"
           fi;
       - name: IRC notification
-        if: ${{ steps.gitlog.outputs.log != '' }}
+        #if: ${{ steps.gitlog.outputs.log != '' }}
         uses: Gottox/irc-message-action@v2
         with:
           server: "irc.oftc.net"
