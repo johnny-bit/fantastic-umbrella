@@ -45,11 +45,12 @@ jobs:
             echo "current log:"
             cat ../log
             echo "";
-            echo "setting output...
+            echo "setting output..."
             output="$(cat ../log)"
             output="${output//$'\n'/\\n}"
             output="${output// / }"
             echo "::set-output name=log::$output"
+            echo ""
           fi;
       - name: IRC notification
         if: ${{ steps.gitlog.outputs.log != '' }}
