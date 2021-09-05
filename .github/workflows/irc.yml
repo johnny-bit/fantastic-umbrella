@@ -63,3 +63,8 @@ jobs:
           message: |-
             Most recent commits:
             ${{ steps.gitlog.outputs.log }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: recent_commit
+          path: current_commit
+          if-no-files-found: warn
