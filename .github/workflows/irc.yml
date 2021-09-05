@@ -29,18 +29,15 @@ jobs:
         continue-on-error: true
         with:
           name: recent_commit
-      - name: Check for empty artifact
-        if: ${{ failure() }}
-        run: |
-          cd src;
-          git log --format="%H" -n 1 --skip 10 > ../recent_commit
       - name: git log
-        if: ${{ always() }}
         id: log
         run: |
           cd src;
+          if [ ! -f ../recent_commit ]; then
+            git log --format="%H" -n 1 --skip 10 > ../recent_commit
+          fi;
           git log --format="%H" -n 1 > ../current_commit
-          if cmp -s ../git_stats/recent_commit ../git_stats/current_commit; then
+          if cmp -s ../recent_commit ../current_commit; then
             echo "no new commits since last run";
           else
             git log --first-parent --pretty=format:"%h: %s (%aN)" `cat ../recent_commit`..`cat ../current_commit`
