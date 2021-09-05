@@ -30,7 +30,7 @@ jobs:
         with:
           name: recent_commit
       - name: git log
-        id: log
+        id: gitlog
         run: |
           cd src;
           if [ ! -f ../recent_commit ]; then
@@ -38,14 +38,18 @@ jobs:
           fi;
           git log --format="%H" -n 1 > ../current_commit
           if cmp -s ../recent_commit ../current_commit; then
-            echo "no new commits since last run";
+            echo "no new commits since last run"
+            echo "::set-output name=log::"
           else
-            git log --first-parent --pretty=format:"%h: %s (%aN)" `cat ../recent_commit`..`cat ../current_commit`
+            echo "::set-output name=log::$(git log --first-parent --pretty=format:"%h: %s (%aN)" `cat ../current_commit`..`cat ../recent_commit`)"
           fi;
       - name: IRC notification
+        if: ${{ steps.gitlog.outputs.log != '' }}
         uses: Gottox/irc-message-action@v2
         with:
           server: "irc.oftc.net"
           channel: '#dt-irc-test'
           nickname: dt-slav
-          message: "test"
+          message: |-
+            Most recent commits:
+            ${{ steps.gitlog.outputs.log }}
