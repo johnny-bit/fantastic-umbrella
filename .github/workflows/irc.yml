@@ -45,7 +45,7 @@ jobs:
             git log --reverse --first-parent --pretty=format:"%h: %s (%aN)" `cat ../recent_commit`..`cat ../current_commit` >> ../log
             #echo "::set-output name=log::$(git log --reverse --first-parent --pretty=format:"%h: %s (%aN)" `cat ../recent_commit`..`cat ../current_commit`)"
             cat ../log
-            output="$(cat changed-fields.out)"
+            output="$(cat ../log)"
             output="${output//$'\n'/\\n}"
             output="${output// / }"
             echo "::set-output name=log::$output"
