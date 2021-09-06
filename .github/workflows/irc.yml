@@ -53,6 +53,7 @@ jobs:
             output="${output//$'\r'/'%0D'}"
             echo "::set-output name=log::$output"
             echo ""
+            echo "::set-output name=llc::$(wc -l ../log)"
           fi;
           cd ..
           mv -f current_commit recent_commit
@@ -64,7 +65,7 @@ jobs:
           channel: '#dt-irc-test'
           nickname: dt-slav
           message: |-
-            Most recent commits:
+            Heło, there be ${{ steps.gitlog.outputs.llc }} new commit(s):
             ${{ steps.gitlog.outputs.log }}
       - uses: actions/upload-artifact@v2
         with:
