@@ -54,7 +54,7 @@ jobs:
             echo "::set-output name=log::$output"
             echo ""
             echo "" >> ../log
-            echo "::set-output name=llc::$(wc -l ../log)"
+            echo "::set-output name=llc::$(wc -l < ../log)"
           fi;
           cd ..
           mv -f current_commit recent_commit
