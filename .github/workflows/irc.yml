@@ -54,6 +54,8 @@ jobs:
             echo "::set-output name=log::$output"
             echo ""
           fi;
+          cd ..
+          mv -f current_commit recent_commit
       - name: IRC notification
         if: ${{ steps.gitlog.outputs.log != '' }}
         uses: Gottox/irc-message-action@v2
@@ -67,5 +69,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: recent_commit
-          path: current_commit
+          path: recent_commit
           if-no-files-found: warn
